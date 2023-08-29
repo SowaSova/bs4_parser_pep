@@ -57,7 +57,7 @@ def pep(session):
                 detail_status = status_tag.find_next_sibling().text
                 if validate_status(preview_status):
                     results = list_dict_compare(
-                        preview_status, detail_status, pep_detail_url, result
+                        preview_status, detail_status, pep_detail_url, results
                     )
     return results
 
