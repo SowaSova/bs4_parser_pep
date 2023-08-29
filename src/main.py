@@ -57,7 +57,8 @@ def pep(session):
                 detail_status = status_tag.find_next_sibling().text
                 if validate_status(preview_status):
                     results = list_dict_compare(
-                        preview_status, detail_status, pep_detail_url, results
+                        preview_status, 
+                        detail_status, pep_detail_url, results
                     )
     return results
 
@@ -71,8 +72,12 @@ def whats_new(session):
 
     soup = bs(response.text, "lxml")
 
-    main_div = find_tag(soup, "section", attrs={"id": "what-s-new-in-python"})
-    div_with_ul = find_tag(main_div, "div", attrs={"class": "toctree-wrapper"})
+    main_div = find_tag(
+        soup, "section", attrs={"id": "what-s-new-in-python"}
+        )
+    div_with_ul = find_tag(
+        main_div, "div", attrs={"class": "toctree-wrapper"}
+        )
     sections_by_python = div_with_ul.find_all(
         "li", attrs={"class": "toctree-l1"}
     )
